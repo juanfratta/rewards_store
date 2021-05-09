@@ -10,6 +10,6 @@ export const TagWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: grey;
+  color: ${({ theme }) => theme.text_light};
   padding: 0 10px;
 `;

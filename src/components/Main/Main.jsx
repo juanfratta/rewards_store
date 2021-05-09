@@ -1,15 +1,18 @@
 import Media from "react-media";
 
-import { ReactComponent as Arrow } from "../svgs/Icons/arrow-right.svg";
+import { ReactComponent as ArrowRight } from "../svgs/Icons/arrow-right.svg";
+import { ReactComponent as ArrowLeft } from "../svgs/Icons/arrow-left.svg";
+
+import { ProductCard } from "../../components";
 import Tag from "../common/Tag";
-import "./index.css";
+
 import {
-  Counter,
   MainWrapper,
   MenuWrapper,
   ProductsWrapper,
   TagsWrapper,
 } from "./Main.styled";
+import Counter from "../common/Counter";
 
 const Main = () => {
   return (
@@ -39,27 +42,18 @@ const Main = () => {
             )
           }
         </Media>
-
-        <Arrow width="34px" height="34px" />
+        <ArrowRight width="48px" height="48px" />
       </MenuWrapper>
       <ProductsWrapper>
-        <div className="item">Producto 1</div>
-        <div className="item">Producto 2</div>
-        <div className="item">Producto 3</div>
-        <div className="item">Producto 4</div>
-        <div className="item">Producto 5</div>
-        <div className="item">Producto 6</div>
-        <div className="item">Producto 7</div>
-        <div className="item">Producto 8</div>
-        <div className="item">Producto 9</div>
-        <div className="item">Producto 10</div>
-        <div className="item">Producto 11</div>
-        <div className="item">Producto 12</div>
-        <div className="item">Producto 13</div>
-        <div className="item">Producto 14</div>
-        <div className="item">Producto 15</div>
-        <div className="item">Producto 16</div>
+        <ProductCard />
       </ProductsWrapper>
+      <MenuWrapper>
+        <Counter>Products: 16 of 32</Counter>
+        <div>
+          <ArrowLeft width="48px" height="48px" />{" "}
+          <ArrowRight width="48px" height="48px" />
+        </div>
+      </MenuWrapper>
     </MainWrapper>
   );
 };

@@ -1,6 +1,6 @@
-import { HeaderWrapper, UserInfo } from "./Header.styled";
 import Tag from "../../common/Tag";
 
+import { HeaderWrapper, UserInfo } from "./Header.styled";
 import { ReactComponent as AerolabLogo } from "../../svgs/logo/AerolabLogo.svg";
 import { ReactComponent as Coin } from "../../svgs/Icons/coin.svg";
 

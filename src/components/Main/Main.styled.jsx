@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainWrapper = styled.div`
   background: ${({ theme }) => theme.back_grey};
-  padding: 0 10%;
+  padding: 0 10% 50px 10%;
 `;
 
 export const MenuWrapper = styled.div`
@@ -11,21 +11,12 @@ export const MenuWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  color: ${({ theme }) => theme.text_ligth};
+  color: ${({ theme }) => theme.text_light};
+  padding: 2rem 0 1.5rem 0;
+  border-bottom: 1px solid ${({ theme }) => theme.line_grey};
 
   @media (max-width: 720px) {
     font-size: 0.9rem;
-  }
-`;
-
-export const Counter = styled.div`
-  border-right: 0.5px solid ${({ theme }) => theme.line_grey};
-  width: 20%;
-  padding: 1rem;
-
-  @media (max-width: 720px) {
-    border: none;
-    padding: 0;
   }
 `;
 
