@@ -1,23 +1,21 @@
-import { ReactComponent as BuyBlue } from "../svgs/Icons/buy-blue.svg";
+import { ReactComponent as BuyBlue } from '../svgs/Icons/buy-blue.svg';
 import {
   CardWrapper,
   IconContainer,
   ImageProduct,
   InfoProductContainer,
-} from "./ProductCard.styled";
+} from './ProductCard.styled';
 
-import productImage from "../../images/products/AcerAspire-x1.png";
-
-const ProductCard = () => {
+const ProductCard = ({ category, name, image }) => {
   return (
     <CardWrapper>
       <IconContainer>
         <BuyBlue width="25px" />
       </IconContainer>
-      <ImageProduct src={productImage} />
+      <ImageProduct src={image} />
       <InfoProductContainer>
-        <p>Category product</p>
-        <h6>Aser Aspire</h6>
+        <p>{category}</p>
+        <h6>{name}</h6>
       </InfoProductContainer>
     </CardWrapper>
   );

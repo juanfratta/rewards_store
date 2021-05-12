@@ -1,16 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import { Palette } from "./theme/palette";
-import { ThemeProvider } from "styled-components";
-import GlobalStyle from "./theme/GlobalStyle";
+import { ProductsProvider } from './contexts/products/context';
+import { ThemeProvider } from 'styled-components';
 
-import App from "./App";
+import { Palette } from './theme/palette';
+import GlobalStyle from './theme/GlobalStyle';
+
+import App from './App';
 
 ReactDOM.render(
-  <ThemeProvider theme={Palette}>
-    <GlobalStyle />
-    <App />
-  </ThemeProvider>,
-  document.getElementById("root")
+  <ProductsProvider>
+    <ThemeProvider theme={Palette}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
+  </ProductsProvider>,
+  document.getElementById('root')
 );

@@ -1,58 +1,56 @@
-import Media from "react-media";
+import { useContext, useEffect, useState } from 'react';
+import { ProductsContext } from '../../contexts/products/context';
 
-import { ReactComponent as ArrowRight } from "../svgs/Icons/arrow-right.svg";
-import { ReactComponent as ArrowLeft } from "../svgs/Icons/arrow-left.svg";
-
-import { ProductCard } from "../../components";
-import Tag from "../common/Tag";
-
-import {
-  MainWrapper,
-  MenuWrapper,
-  ProductsWrapper,
-  TagsWrapper,
-} from "./Main.styled";
-import Counter from "../common/Counter";
+import { MainWrapper, MenuWrapper, ProductsWrapper } from './Main.styled';
+import { ProductCard, Menu, Pagination } from '../../components';
+import Counter from '../common/Counter';
 
 const Main = () => {
+  const { loading_products, products, error_products, getProducts } =
+    useContext(ProductsContext);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalProducts = products.length;
+  const productsPerPage = 16;
+
+  const indexOfLastproduct = currentPage * productsPerPage;
+  const indexOfFirstproduct = indexOfLastproduct - productsPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstproduct,
+    indexOfLastproduct
+  );
+
+  const handlerPagination = (e) => {
+    const totalPages = totalProducts / productsPerPage;
+
+    e.target.id === 'right'
+      ? currentPage < totalPages && setCurrentPage(currentPage + 1)
+      : currentPage > 1 && setCurrentPage(currentPage - 1);
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
+
   return (
     <MainWrapper>
-      <MenuWrapper>
-        <Counter>Products: 16 of 32</Counter>
-
-        <Media query="(min-width: 720px)">
-          {(matches) =>
-            matches ? (
-              <TagsWrapper>
-                <span>Sort By:</span>
-                <Tag>Most Recent</Tag>
-                <Tag>Lower Price</Tag>
-                <Tag>Highest Price</Tag>
-              </TagsWrapper>
-            ) : (
-              <div>
-                {" "}
-                Sort By: <br />
-                <select style={{ color: "#A3A3A3" }}>
-                  <option value="">Most Recent</option>
-                  <option value="">Lower Price</option>
-                  <option value="">Highest Price</option>
-                </select>
-              </div>
-            )
-          }
-        </Media>
-        <ArrowRight width="48px" height="48px" />
-      </MenuWrapper>
+      <Menu handlerClick={handlerPagination} />
       <ProductsWrapper>
-        <ProductCard />
+        {loading_products && <h3>Loading...</h3>}
+        {currentProducts &&
+          currentProducts.map((product) => (
+            <ProductCard
+              key={product._id}
+              category={product.category}
+              name={product.name}
+              image={product.img.url}
+            />
+          ))}
+        {error_products && <h3>Error al cargar los productos</h3>}
       </ProductsWrapper>
       <MenuWrapper>
-        <Counter>Products: 16 of 32</Counter>
-        <div>
-          <ArrowLeft width="48px" height="48px" />{" "}
-          <ArrowRight width="48px" height="48px" />
-        </div>
+        <Counter>{`Products: ${productsPerPage} of ${totalProducts}`}</Counter>
+        <Pagination handlerClick={handlerPagination} />
       </MenuWrapper>
     </MainWrapper>
   );
