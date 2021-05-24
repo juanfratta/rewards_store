@@ -10,14 +10,23 @@ export const MenuWrapper = styled.div`
   padding: 2rem 0 1.5rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.line_grey};
 
-  @media (max-width: 720px) {
+  @media (max-width: 900px) {
     font-size: 0.9rem;
   }
 `;
 
 export const TagsWrapper = styled.div`
-  width: 70%;
+  //width: 70%;
   display: flex;
   flex-direction: row;
   align-items: center;
+`;
+
+export const Select = styled.select`
+  color: ${({ theme }) => theme.text_light};
+  border: none;
+
+  &:hover {
+    outline: none;
+  }
 `;

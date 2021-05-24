@@ -1,38 +1,48 @@
 import Media from 'react-media';
 
-import { MenuWrapper, TagsWrapper } from './Menu.styled';
+import { MenuWrapper, TagsWrapper, Select } from './Menu.styled';
 import { Pagination } from '..';
 import Counter from '../common/Counter';
 import Tag from '../common/Tag';
 
-const Menu = ({ handlerClick }) => {
+const Menu = ({
+  totalProducts,
+  productsPerPage,
+  handlerByCost,
+  handlerPagination,
+}) => {
   return (
     <MenuWrapper>
-      <Counter>Products: 16 of 32</Counter>
+      <Counter>{`Products: ${productsPerPage} of ${totalProducts}`}</Counter>
 
       <Media query="(min-width: 720px)">
         {(matches) =>
           matches ? (
             <TagsWrapper>
               <span>Sort By:</span>
-              <Tag>Most Recent</Tag>
-              <Tag>Lower Price</Tag>
-              <Tag>Highest Price</Tag>
+              <Tag name="lower-price" handlerClick={handlerByCost}>
+                Lower Price
+              </Tag>
+              <Tag name="highest price" handlerClick={handlerByCost}>
+                Highest Price
+              </Tag>
             </TagsWrapper>
           ) : (
             <div>
-              {' '}
               Sort By: <br />
-              <select style={{ color: '#A3A3A3' }}>
-                <option value="">Most Recent</option>
-                <option value="">Lower Price</option>
-                <option value="">Highest Price</option>
-              </select>
+              <Select>
+                <option onClick={handlerByCost}>Lower Price</option>
+                <option onClick={handlerByCost}>Highest Price</option>
+              </Select>
             </div>
           )
         }
       </Media>
-      <Pagination handlerClick={handlerClick} />
+      <Pagination
+        handlerClick={handlerPagination}
+        productsPerPage={productsPerPage}
+        totalProducts={totalProducts}
+      />
     </MenuWrapper>
   );
 };

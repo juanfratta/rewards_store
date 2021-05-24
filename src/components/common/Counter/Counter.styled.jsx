@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Counter = styled.div`
   border-right: 0.5px solid ${({ theme }) => theme.line_grey};
@@ -7,6 +7,7 @@ export const Counter = styled.div`
   color: ${({ theme }) => theme.text_dark};
 
   @media (max-width: 720px) {
+    font-size: small;
     border: none;
     padding: 0;
   }

@@ -1,9 +1,13 @@
-import { TagWrapper } from "./Tag.styled";
+import { TagWrapper } from './Tag.styled';
 
-const Tag = ({ text, children }) => {
+const Tag = ({ handlerClick, children, name, disabledOnClick }) => {
   return (
-    <TagWrapper>
-      <p>{text}</p>
+    <TagWrapper
+      name={name}
+      onClick={(e) => {
+        !disabledOnClick && handlerClick(e);
+      }}
+    >
       {children}
     </TagWrapper>
   );

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const TagWrapper = styled.div`
+export const TagWrapper = styled.button`
   min-width: 100px;
   max-width: 400px;
   height: 2rem;
@@ -12,4 +12,10 @@ export const TagWrapper = styled.div`
   justify-content: space-between;
   color: ${({ theme }) => theme.text_light};
   padding: 0 10px;
+  border: none;
+  outline: none;
+  &:active {
+    background: ${(props) => props.name !== 'onlyTag' && props.theme.primary};
+    color: ${(props) => props.name !== 'onlyTag' && 'white'};
+  }
 `;

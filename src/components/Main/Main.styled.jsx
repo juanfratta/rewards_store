@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MainWrapper = styled.div`
   background: ${({ theme }) => theme.back_grey};
@@ -18,13 +18,6 @@ export const MenuWrapper = styled.div`
   @media (max-width: 720px) {
     font-size: 0.9rem;
   }
-`;
-
-export const TagsWrapper = styled.div`
-  width: 70%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 `;
 
 export const ProductsWrapper = styled.div`

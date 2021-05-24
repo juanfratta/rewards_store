@@ -1,11 +1,9 @@
-import Header from "./Header";
-import Hero from "../Hero";
+import Header from './Header';
 
 const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <Hero />
       {children}
     </>
   );
