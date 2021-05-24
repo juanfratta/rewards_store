@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BASE_URL, headers } from '../utils/variables';
 
+//ACTIONS-TYPES
 export const FETCH_USER_BEGIN = 'FETCH_USER_BEGIN';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const FETCH_USER_ERROR = 'FETCH_USER_ERROR';
@@ -12,6 +13,10 @@ export const FETCH_PRODUCST_ERROR = 'FETCH_PRODUCTS_ERROR';
 export const SET_CURRENT_POINTS_BEGIN = 'SET_CURRENT_POINTS_BEGIN';
 export const SET_CURRENT_POINTS_SUCCESS = 'SET_CURRENT_POINTS_SUCCESS';
 
+/* export const SET_REDEEM_PRODUCT_BEGIN = 'SET_REDEEM_PRODUCT_BEGIN';
+export const SET_REDEEM_PRODUCT_SUCCESS = 'SET_REDEEM_PRODUCT_SUCCESS'; */
+
+//ACTIONS
 export const getCurrentUser = async (dispatch) => {
   dispatch({ type: FETCH_USER_BEGIN });
   const endpointUser = `${BASE_URL}/user/me`;
@@ -59,3 +64,15 @@ export const setCurrentPoints = async (dispatch, points) => {
       })
     );
 };
+
+/* export const setRedeemProduct = async (dispatch, productId) => {
+  dispatch({ type: SET_REDEEM_PRODUCT_BEGIN });
+
+  let body = { productId: productId };
+
+  return axios
+    .post(`${BASE_URL}/redeem`, { headers }, body)
+    .then((res) =>
+      dispatch({ type: SET_REDEEM_PRODUCT_SUCCESS, payload: res.data })
+    );
+}; */

@@ -1,1 +1,2 @@
-export { default } from './Loader';
+import { Loader } from './Loader.styled';
+export default Loader;

@@ -7,6 +7,8 @@ import {
   FETCH_PRODUCTS_SUCCESS,
   SET_CURRENT_POINTS_BEGIN,
   SET_CURRENT_POINTS_SUCCESS,
+  /* SET_REDEEM_PRODUCT_BEGIN,
+  SET_REDEEM_PRODUCT_SUCCESS, */
 } from './actions';
 
 export const Reducer = (state, action) => {
@@ -60,6 +62,18 @@ export const Reducer = (state, action) => {
         loading_points: false,
         points: action.payload,
       };
+    /*  case SET_REDEEM_PRODUCT_BEGIN:
+      return {
+        ...state,
+        products_history_loading: true,
+      };
+
+    case SET_REDEEM_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        products_history_loading: false,
+        products_history: action.payload,
+      }; */
 
     default:
   }

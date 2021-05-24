@@ -1,8 +1,11 @@
-import {  Main } from "../../components";
+import { Hero, ProductsList } from '../../components';
 
 const Home = () => {
   return (
-      <Main />
+    <>
+      <Hero />
+      <ProductsList />
+    </>
   );
 };
 

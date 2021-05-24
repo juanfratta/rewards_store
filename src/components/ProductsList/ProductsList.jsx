@@ -1,13 +1,17 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { RewardStoreContext } from '../../contexts/context';
 
-import { MainWrapper, MenuWrapper, ProductsWrapper } from './Main.styled';
-import { ProductCard, Menu, Pagination } from '../../components';
+import {
+  MainWrapper,
+  MenuWrapper,
+  ProductsWrapper,
+} from './ProductsList.styled';
+import { ProductCard, Menu, Pagination } from '..';
 import Counter from '../common/Counter';
-import Hero from '../Hero';
-import Loader from '../common/Loader';
 
-const Main = () => {
+import SkeletonCardList from './SkeletonCardList';
+
+const ProductsList = () => {
   const { getProducts, loading_products, products, error_products } =
     useContext(RewardStoreContext);
 
@@ -64,7 +68,6 @@ const Main = () => {
 
   return (
     <>
-      <Hero />
       <MainWrapper>
         <Menu
           handlerByCost={sortByCost}
@@ -74,16 +77,13 @@ const Main = () => {
         />
 
         <ProductsWrapper>
-          {loading_products && (
-            <div>
-              <Loader />
-            </div>
-          )}
+          {loading_products && <SkeletonCardList />}
 
           {productsPerPageState &&
             productsPerPageState.map((product) => (
               <ProductCard
                 key={product._id}
+                productId={product._id}
                 category={product.category}
                 name={product.name}
                 image={product.img.url}
@@ -102,4 +102,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default ProductsList;

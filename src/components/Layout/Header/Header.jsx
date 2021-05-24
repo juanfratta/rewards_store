@@ -9,6 +9,7 @@ import { HeaderWrapper, UserInfoContainer, UserInfo } from './Header.styled';
 import { ReactComponent as AerolabLogo } from '../../svgs/logo/AerolabLogo.svg';
 import { ReactComponent as Coin } from '../../svgs/Icons/coin.svg';
 import Tag from '../../common/Tag';
+import Loader from '../../common/Loader';
 
 const Header = () => {
   const { load_user, user, error_user, loading_points, points } =
@@ -28,7 +29,7 @@ const Header = () => {
             </UserInfo>
             <Tag name={'onlyTag'} disabledOnClick={true}>
               <Coin width="25px" height="25px" />
-              {loading_points ? <span>load ...</span> : points}
+              {loading_points ? <Loader size="20px" /> : points}
             </Tag>
           </>
         )}

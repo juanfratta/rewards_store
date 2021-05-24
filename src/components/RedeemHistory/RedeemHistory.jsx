@@ -1,21 +1,25 @@
-import { useContext, useEffect, useState } from 'react';
-import { RewardStoreContext } from '../../contexts/context';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+import { BASE_URL, headers } from '../../utils/variables';
 import ProductInfo from './ProductInfo';
+import Loader from '../common/Loader';
 
 const RedeemHistory = () => {
-  const { user } = useContext(RewardStoreContext);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    let products = user && user.redeemHistory.reverse().slice(0, 20);
-    setItems(products);
-  }, [user]);
+    axios
+      .get(`${BASE_URL}/user/history`, { headers })
+      .then((res) => setItems(res.data.reverse().slice(0, 20)));
+  }, []);
 
   return (
     <div>
+      {console.log(items)}
       <h3>Your redeem history:</h3>
-      {!user && <h3>Loading</h3>}
-      {user &&
+      {!items === [] && <span>loading</span>}
+      {items &&
         items.map((item, index) => (
           <ProductInfo
             key={index}

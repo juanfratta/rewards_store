@@ -1,5 +1,10 @@
 import { createContext, useCallback, useReducer } from 'react';
-import { fetchProducts, getCurrentUser, setCurrentPoints } from './actions';
+import {
+  fetchProducts,
+  getCurrentUser,
+  setCurrentPoints,
+  /*  setRedeemProduct, */
+} from './actions';
 import { Reducer } from './reducer';
 
 export const RewardStoreContext = createContext();
@@ -13,6 +18,8 @@ const initialState = {
   error_products: false,
   loading_points: false,
   points: undefined,
+  /*  products_history_loading: false,
+  products_history: [], */
 };
 
 export const RewardStoreProvider = ({ children }) => {
@@ -30,6 +37,10 @@ export const RewardStoreProvider = ({ children }) => {
     setCurrentPoints(dispatch, points);
   };
 
+  /* const redeemProduct = (productId) => {
+    setRedeemProduct(dispatch, productId);
+  };
+ */
   return (
     <RewardStoreContext.Provider
       value={{
@@ -41,10 +52,13 @@ export const RewardStoreProvider = ({ children }) => {
         error_products: state.error_products,
         loading_points: state.loading_points,
         points: state.points,
+        /*  products_history_loading: state.products_history_loading,
+        products_history: state.products_history, */
 
         getProducts,
         getUser,
         setPoints,
+        /*  redeemProduct, */
       }}
     >
       {children}
