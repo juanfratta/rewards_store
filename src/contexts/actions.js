@@ -13,9 +13,6 @@ export const FETCH_PRODUCST_ERROR = 'FETCH_PRODUCTS_ERROR';
 export const SET_CURRENT_POINTS_BEGIN = 'SET_CURRENT_POINTS_BEGIN';
 export const SET_CURRENT_POINTS_SUCCESS = 'SET_CURRENT_POINTS_SUCCESS';
 
-/* export const SET_REDEEM_PRODUCT_BEGIN = 'SET_REDEEM_PRODUCT_BEGIN';
-export const SET_REDEEM_PRODUCT_SUCCESS = 'SET_REDEEM_PRODUCT_SUCCESS'; */
-
 //ACTIONS
 export const getCurrentUser = async (dispatch) => {
   dispatch({ type: FETCH_USER_BEGIN });
@@ -64,15 +61,3 @@ export const setCurrentPoints = async (dispatch, points) => {
       })
     );
 };
-
-/* export const setRedeemProduct = async (dispatch, productId) => {
-  dispatch({ type: SET_REDEEM_PRODUCT_BEGIN });
-
-  let body = { productId: productId };
-
-  return axios
-    .post(`${BASE_URL}/redeem`, { headers }, body)
-    .then((res) =>
-      dispatch({ type: SET_REDEEM_PRODUCT_SUCCESS, payload: res.data })
-    );
-}; */

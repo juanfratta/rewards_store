@@ -1,4 +1,4 @@
-const { createGlobalStyle } = require("styled-components");
+const { createGlobalStyle } = require('styled-components');
 
 const GlobalStyle = createGlobalStyle`* {
     box-sizing: border-box;
@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`* {
     padding: 0;
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    color: #616161;
   }
 `;
 

@@ -17,14 +17,17 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
-      <AerolabLogo />
+      <Link to="/">
+        <AerolabLogo />
+      </Link>
       <UserInfoContainer>
         {load_user && <p>Loading user... </p>}
         {user && (
           <>
             <UserInfo>
               <Link to="/user">
-                <span>{user.name}</span> <FontAwesomeIcon icon={faUser} />
+                <span style={{ paddingRight: '10px' }}>{user.name}</span>
+                <FontAwesomeIcon icon={faUser} />
               </Link>
             </UserInfo>
             <Tag name={'onlyTag'} disabledOnClick={true}>
