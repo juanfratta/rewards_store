@@ -27,6 +27,7 @@ const ProductCard = ({ category, cost, image, name, productId }) => {
   const [showModal, setShowModal] = useState(false);
   const [loadRedeem, setLoadRedeem] = useState(false);
   const [redeem, setRedeem] = useState('');
+  const [errorRedeem, setErrorRedeem] = useState('');
 
   const handlerRedeem = async () => {
     setShowModal(true);
@@ -36,7 +37,7 @@ const ProductCard = ({ category, cost, image, name, productId }) => {
     await axios
       .post(`${BASE_URL}/redeem`, body, { headers })
       .then((res) => setRedeem(res.data.message))
-      .catch((error) => setRedeem('Error: no redeem product'));
+      .catch((error) => setErrorRedeem('Error: no redeem product'));
 
     setLoadRedeem(false);
   };
@@ -55,6 +56,7 @@ const ProductCard = ({ category, cost, image, name, productId }) => {
             name={name}
             loadRedeem={loadRedeem}
             redeem={redeem}
+            errorRedeem={errorRedeem}
           />
         )}
         {hover && (

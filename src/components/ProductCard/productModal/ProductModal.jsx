@@ -2,8 +2,10 @@ import ReactModal from 'react-modal';
 import Loader from '../../common/Loader';
 import {
   ButtonContainer,
+  ErrorRedeem,
   LoaderContainer,
   ModalWrapper,
+  Redeem,
 } from './ProductModal.styled';
 
 import './styles.css';
@@ -17,6 +19,7 @@ const ProductModal = ({
   name,
   loadRedeem,
   redeem,
+  errorRedeem,
 }) => {
   return (
     <ReactModal isOpen={isOpen} showModal={showModal} className="Modal">
@@ -32,7 +35,16 @@ const ProductModal = ({
             <Loader size={'30px'} />
           </LoaderContainer>
         )}
-        {redeem && <h4>{redeem}</h4>}
+        {redeem && (
+          <Redeem>
+            <p>{redeem}</p>
+          </Redeem>
+        )}
+        {errorRedeem && (
+          <ErrorRedeem>
+            <p>{errorRedeem}</p>
+          </ErrorRedeem>
+        )}
       </ModalWrapper>
     </ReactModal>
   );
