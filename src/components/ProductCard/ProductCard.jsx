@@ -73,7 +73,7 @@ const ProductCard = ({ category, cost, image, name, productId }) => {
         )}
 
         <IconContainer>
-          {!points && <Loader size="25px" />}
+          {!points && !hover && <Loader size="25px" />}
           {!hover && points > cost && <BuyBlue width="25px" />}
           {!hover && points < cost && (
             <Tag name={'onlyTag'} disabledOnClick={true}>

@@ -24,7 +24,7 @@ export const UserInfo = styled.div`
     }
 
     span {
-      padding-right: 50px;
+      padding-right: 10px;
     }
   }
 `;
