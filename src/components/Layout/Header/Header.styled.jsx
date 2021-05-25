@@ -22,5 +22,9 @@ export const UserInfo = styled.div`
     &:hover {
       color: ${({ theme }) => theme.primary};
     }
+
+    span {
+      padding-right: 50px;
+    }
   }
 `;

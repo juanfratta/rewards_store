@@ -26,7 +26,7 @@ const Header = () => {
           <>
             <UserInfo>
               <Link to="/user">
-                <span style={{ paddingRight: '10px' }}>{user.name}</span>
+                <span>{user.name}</span>
                 <FontAwesomeIcon icon={faUser} />
               </Link>
             </UserInfo>

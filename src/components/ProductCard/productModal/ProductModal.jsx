@@ -28,7 +28,7 @@ const ProductModal = ({
         <img src={image} alt={name} />
         {loadRedeem && (
           <LoaderContainer>
-            <h4>load redeem ... </h4>
+            <h4>loading redeem ... </h4>
             <Loader size={'30px'} />
           </LoaderContainer>
         )}
